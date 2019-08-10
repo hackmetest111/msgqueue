@@ -1,24 +1,29 @@
-package ccom.dbs.lcsa.messagequeue.Controller;
+package com.dbs.lcsa.messagequeue.Controller;
+import com.dbs.lcsa.messagequeue.Model.QueueDetails;
 
-import com.dbs.consumer.consumerdesk.Model.Consumer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
-import org.springframework.jms.config.JmsListenerContainerFactory;
-import org.springframework.jms.core.JmsTemplate;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.jms.TextMessage;
 import java.util.ArrayList;
-import java.util.Enumeration;
+
 import java.util.List;
+import java.util.concurrent.LinkedTransferQueue;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping(value="api/getmessagequeue",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class MessageQueueController {
+  @GetMapping("/getAllQueue")
+public List<QueueDetails> getQueueDetails()
+    {
+        List<QueueDetails> lstqueue=new ArrayList<>();
+        lstqueue.add(new QueueDetails(1,"test"));
+        return lstqueue;
 
+    }
 
 
 }
