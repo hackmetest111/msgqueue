@@ -108,6 +108,25 @@ msgdetails.remove(messageDetails);
                 lstmessagedetails,
                 HttpStatus.OK);
     }
+    @GetMapping("/getAllMessages")
+    public List<QueueDetails> getAllMessages(){
+    	/*ArrayList<QueueDetails> queueDetails = new ArrayList<QueueDetails>();
+    	queueDetails.add(new QueueDetails(1, "sample1"));
+    	queueDetails.add(new QueueDetails(1, "sample2"));
+    	
+    	List<String>
+    	for (QueueDetails queueDetails2 : queueDetails) {
+			
+		}*/
+		 List<QueueDetails> lstqueue=new ArrayList<>();
+		 List<String> message1 = new ArrayList<String>();
+		 message1.add("samaple1");
+		 message1.add("samaple2");
+	     lstqueue.add(new QueueDetails(1,"test",message1));
+	     return lstqueue;
+         
+    }
+    
 
 
 }
