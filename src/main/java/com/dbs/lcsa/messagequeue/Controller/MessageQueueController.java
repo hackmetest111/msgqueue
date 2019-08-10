@@ -1,15 +1,8 @@
 package com.dbs.lcsa.messagequeue.Controller;
 import com.dbs.lcsa.messagequeue.Model.QueueDetails;
-
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
+import java.util.*;
 import java.util.concurrent.LinkedTransferQueue;
 
 @CrossOrigin
@@ -22,6 +15,14 @@ public List<QueueDetails> getQueueDetails()
         List<QueueDetails> lstqueue=new ArrayList<>();
         lstqueue.add(new QueueDetails(1,"test"));
         return lstqueue;
+    }
+    @PostMapping("/addMessages")
+    public void pushMessage(@RequestParam(name = "id") Integer queueId, @RequestParam String message)
+    {
+        LinkedTransferQueue<String> messagequeue=new LinkedTransferQueue<>();
+        messagequeue.put(message);
+        Map<Integer,LinkedTransferQueue<String>> messages=new HashMap<>();
+        messages.put(queueId,messagequeue);
 
     }
 
