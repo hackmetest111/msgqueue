@@ -26,7 +26,7 @@ public List<QueueDetails> getQueueDetails()
 
     }
     @GetMapping("/getAllMessages")
-    public List<String> getAllMessages(){
+    public List<QueueDetails> getAllMessages(){
     	/*ArrayList<QueueDetails> queueDetails = new ArrayList<QueueDetails>();
     	queueDetails.add(new QueueDetails(1, "sample1"));
     	queueDetails.add(new QueueDetails(1, "sample2"));
@@ -35,10 +35,13 @@ public List<QueueDetails> getQueueDetails()
     	for (QueueDetails queueDetails2 : queueDetails) {
 			
 		}*/
-    	  List<String> lstqueue=new ArrayList<String>();
-          lstqueue.add("sample1");
-          lstqueue.add("sample2");
-          return lstqueue;
+		 List<QueueDetails> lstqueue=new ArrayList<>();
+		 List<String> message1 = new ArrayList<String>();
+		 message1.add("samaple1");
+		 message1.add("samaple2");
+	     lstqueue.add(new QueueDetails(1,"test",message1));
+	     return lstqueue;
+         
     }
     
 
